@@ -71,6 +71,7 @@ public class Robot extends IterativeRobot {
         driveTrain.resetG();
         c = CameraServer.getInstance().startAutomaticCapture();
         SmartDashboard.putNumber("Exposure", 20);
+        //c.setResolution(640, 480);
        
         new VisionThread(c, new GripPipeline(), 
         		new VisionListener(CameraServer.getInstance().putVideo("Processed", 640, 480)
@@ -89,6 +90,8 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         c.setExposureManual((int)SmartDashboard.getNumber("Exposure", 20));
+        if(oi.getJ1().getRawButton(12))RobotMap.navX.resetDisplacement();
+      
     }
 
     public void autonomousInit() {

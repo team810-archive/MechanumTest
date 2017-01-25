@@ -70,7 +70,7 @@ public class VisionListener implements VisionRunner.Listener<GripPipeline>{
 					newResult = true;
 				}
 				
-			});;
+			});
 		
 		outputStream.putFrame(img);
 		img.release();

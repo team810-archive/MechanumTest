@@ -15,13 +15,6 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>edu.wpi.first.wpilib.plugins.core.nature.FRCProjectNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Mecanum.yaml</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Mecanum.yaml</locationURI>
-		</link>
-	</linkedResources>
 	<filteredResources>
 		<filter>
 			<id>1419649143453</id>
