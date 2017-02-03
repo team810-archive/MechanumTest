@@ -44,7 +44,7 @@ public class VisionListener implements VisionRunner.Listener<GripPipeline>{
 	@Override
 	public void copyPipelineOutputs(GripPipeline pipeline) {
 		
-		Mat img = new Mat(640,480, 0);
+		Mat img = new Mat(160, 120, 0);
 		input.grabFrame(img);
 		
 		List<MatOfPoint> matList = pipeline.convexHullsOutput();
@@ -74,6 +74,7 @@ public class VisionListener implements VisionRunner.Listener<GripPipeline>{
 		
 		outputStream.putFrame(img);
 		img.release();
+		
 	}
 	
 }

@@ -17,9 +17,15 @@ public class AutoPutData {
 	
 	static{
 		executor.scheduleWithFixedDelay(()->{
+			try{
 			numbers.forEach(a->{
+				//System.out.println("Putting on SmartDashboard:"+a.name+", "+a.supplier.get());
 				SmartDashboard.putNumber(a.name, a.supplier.get());
 			});
+			}catch(Exception e){
+				System.out.println("Exception in autoPutData: ");
+				e.printStackTrace();
+			}
 		}, 0, 50, TimeUnit.MILLISECONDS);
 	}
 	
