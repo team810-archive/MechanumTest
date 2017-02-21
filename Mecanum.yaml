@@ -12,7 +12,7 @@ Children:
             default: Talon
             name: Type
             validators: null
-            value: Spark
+            value: Victor
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: &id002 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
               '11', '12', '13', '14', '15', '16', '17', '18', '19']
@@ -29,7 +29,7 @@ Children:
             default: Talon
             name: Type
             validators: null
-            value: Spark
+            value: Victor
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -45,7 +45,7 @@ Children:
             default: Talon
             name: Type
             validators: null
-            value: Spark
+            value: Victor
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -61,7 +61,7 @@ Children:
             default: Talon
             name: Type
             validators: null
-            value: Spark
+            value: Victor
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -450,7 +450,7 @@ Children:
     Base: Command
     Name: ControlCamera
   - Children: []
-    Properties:
+    Properties: &id010
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -511,7 +511,7 @@ Children:
     Base: Command
     Name: VisionMoveCamera
   - Children: []
-    Properties: &id013
+    Properties: &id014
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -545,7 +545,7 @@ Children:
         name: Commands
         validators: [List]
         value:
-        - &id011 !!robotbuilder.data.CommandGroupEntry
+        - &id012 !!robotbuilder.data.CommandGroupEntry
           command:
             base:
               help: A command specifies an action that the robot can perform and finishes instantly.
@@ -568,29 +568,7 @@ Children:
               supports: {}
               type: Command
             name: SetCameraPosition
-            properties:
-              Parameters: !!robotbuilder.data.properties.ParametersProperty
-                default: []
-                name: Parameters
-                validators: null
-                value:
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: pan, type: double}
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: tilt,
-                  type: double}
-              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-                name: Requires, type: Subsystem, validators: null, value: Camera}
-              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-                default: []
-                name: Parameter presets
-                validators: null
-                value:
-                - !!robotbuilder.data.properties.ParameterSet
-                  name: Center
-                  parameters:
-                  - {name: pan, type: double, value: '.5'}
-                  - {name: tilt, type: double, value: '.5'}
-              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
-                default: true, name: Button on SmartDashboard, validators: null, value: true}
+            properties: *id010
           hasMatch: true
           order: Sequential
           parameters:
@@ -603,7 +581,7 @@ Children:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: tilt,
               type: double, value: '0.38055555555555554'}
           previous: null
-        - &id014 !!robotbuilder.data.CommandGroupEntry
+        - &id015 !!robotbuilder.data.CommandGroupEntry
           command:
             base:
               help: A command specifies an action that the robot can perform and finishes after a timeout.
@@ -621,14 +599,14 @@ Children:
                 - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
                   type: double}
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id010 []
+                default: &id011 []
                 name: Parameter presets
                 validators: null
-                value: *id010
+                value: *id011
               supports: {}
               type: Command
             name: WaitCommand
-            properties: &id015
+            properties: &id016
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default:
                 - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
@@ -656,7 +634,7 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
               type: double, value: '.2'}
-          previous: *id011
+          previous: *id012
         - !!robotbuilder.data.CommandGroupEntry
           command:
             base:
@@ -673,14 +651,14 @@ Children:
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id012 []
+                default: &id013 []
                 name: Parameter presets
                 validators: null
-                value: *id012
+                value: *id013
               supports: {}
               type: Command
             name: VisionLineUp
-            properties: *id013
+            properties: *id014
           hasMatch: true
           order: Sequential
           parameters:
@@ -688,13 +666,13 @@ Children:
             name: ParametersProperty
             validators: null
             value: []
-          previous: *id014
+          previous: *id015
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: LineUpSequence
   - Children: []
-    Properties: *id015
+    Properties: *id016
     Base: Timed Command
     Name: WaitCommand
   - Children: []
